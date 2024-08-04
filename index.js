@@ -1,19 +1,52 @@
-class Pessoa {
-    constructor(nome, sobrenome){
+class DispositivoEletronico {
+    constructor(nome) {
         this.nome = nome;
-        this.sobrenome = sobrenome;
+        this.ligado = false;
     }
-    get nomeCompleto(){
-        return `${this.nome} ${this.sobrenome}`
-    }
+    ligar() {
+        if (this.ligado) {
+            console.log(`${this.nome} já ligado`);
+            return;
+        }
 
-    set nomeCompleto(valor) {
-        valor = valor.split(' ');
-        this.nome = valor.shift();
-        this.sobrenome = valor.join(' ');
+        this.ligado = true;
+    }
+    desligar() {
+        if (!this.ligado) {
+            console.log(`${this.nome} já desligado`);
+            return;
+        }
+
+        this.ligado = false;
     }
 }
 
-const p1 = new Pessoa("Leví", "Oliveira");
-p1.nomeCompleto = 'Leví de Lima Oliveira';
-console.log(p1.nomeCompleto);
+class Smartphone extends DispositivoEletronico {
+    constructor(nome, cor, modelo) {
+        super(nome);
+        this.cor = cor;
+        this.modelo = modelo;
+    }
+}
+
+class Tablet extends DispositivoEletronico {
+    constructor(nome, temWifi) {
+        super(nome);
+        this.temWifi = temWifi;
+    }
+
+    ligar(){
+        console.log('Você alterou o metodo ligar');
+    }
+    falaOi() {
+        console.log('oi');
+    }
+}
+
+const s1 = new Smartphone('iPhone', 'preto', 'xr');
+
+const t1 = new Tablet('ipad', true)
+
+t1.ligar();
+t1.ligar();
+t1.falaOi();
