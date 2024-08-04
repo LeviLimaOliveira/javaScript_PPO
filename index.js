@@ -1,52 +1,21 @@
-class DispositivoEletronico {
-    constructor(nome) {
-        this.nome = nome;
-        this.ligado = false;
+class ControleRemoto {
+    constructor(tv) {
+        this.tv = tv;
+        this.volume = 0;
     }
-    ligar() {
-        if (this.ligado) {
-            console.log(`${this.nome} já ligado`);
-            return;
-        }
-
-        this.ligado = true;
+     //Metodos de instância
+    aumentarVolume(){
+        this.volume += 2;
     }
-    desligar() {
-        if (!this.ligado) {
-            console.log(`${this.nome} já desligado`);
-            return;
-        }
+    dimuinuirVolume(){
+        this.volume -= 2;
+    }
 
-        this.ligado = false;
+    //Metodo estático
+    static soma(x, y){
+        return x + y;
     }
 }
 
-class Smartphone extends DispositivoEletronico {
-    constructor(nome, cor, modelo) {
-        super(nome);
-        this.cor = cor;
-        this.modelo = modelo;
-    }
-}
-
-class Tablet extends DispositivoEletronico {
-    constructor(nome, temWifi) {
-        super(nome);
-        this.temWifi = temWifi;
-    }
-
-    ligar(){
-        console.log('Você alterou o metodo ligar');
-    }
-    falaOi() {
-        console.log('oi');
-    }
-}
-
-const s1 = new Smartphone('iPhone', 'preto', 'xr');
-
-const t1 = new Tablet('ipad', true)
-
-t1.ligar();
-t1.ligar();
-t1.falaOi();
+const controle1 = new ControleRemoto('LG');
+console.log(ControleRemoto.soma(2, 4));
