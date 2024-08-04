@@ -3,25 +3,17 @@ class Pessoa {
         this.nome = nome;
         this.sobrenome = sobrenome;
     }
-    falar(){
-        console.log(`${this.nome} está falando`)
+    get nomeCompleto(){
+        return `${this.nome} ${this.sobrenome}`
     }
 
-    comer(){
-        console.log(`${this.nome} está comendo`)
-    }
-
-    bebendo(){
-        console.log(`${this.nome} está bebendo`)
+    set nomeCompleto(valor) {
+        valor = valor.split(' ');
+        this.nome = valor.shift();
+        this.sobrenome = valor.join(' ');
     }
 }
 
 const p1 = new Pessoa("Leví", "Oliveira");
-const p2 = new Pessoa("Isaac", "Newton");
-const p3 = new Pessoa("Albert", "Einstein");
-const p4 = new Pessoa("Richard", "Feynman");
-
-console.log(p1)
-console.log(p2)
-console.log(p3)
-console.log(p4)
+p1.nomeCompleto = 'Leví de Lima Oliveira';
+console.log(p1.nomeCompleto);
